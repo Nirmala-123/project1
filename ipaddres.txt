@@ -1,0 +1,45 @@
+package com.in;
+
+import java.util.Scanner;
+
+public class Ipaddress {
+
+
+	public static void main(String[] args) {
+		
+					int b=0;int i = 0; int j=0; int k=0;int l=0;
+					Scanner s=new Scanner(System.in);
+					System.out.println("Enter ip address:");
+					String ipAd=s.next();
+					String a[]= ipAd.split("\\.");
+					
+					if(a.length>4)
+					{
+						System.out.println("Not a Invalid ip");
+					}
+					else
+					{
+					for(int h=0; h<a.length; h++)
+					{
+						 i =Integer.parseInt(a[0]);
+						j =Integer.parseInt(a[1]);
+						 k =Integer.parseInt(a[2]);
+						l =Integer.parseInt(a[3]);	
+					}
+					
+					if(i>0 && i<128 && j>128 && j<191 && k>192 && k<223 && l>240 && l<255)
+					{
+
+							System.out.println("valid ip");
+					}
+					else
+					{
+						System.out.println("Invalid ip");
+					}
+				}
+			
+
+
+	}
+
+}

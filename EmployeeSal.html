@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Salary Slip Calculation</title>
+<style>
+</style>
+<script>
+function calculateSalary()
+{
+var emp_fname=document.getElementById("firstname").value;
+var emp_lname=document.getElementById("lastname").value;
+var emp_fullname=emp_fname+ emp_lname;
+
+var emp_gross_salary=document.getElementById("sal").value;
+var emp_net_salary=0;
+
+if(emp_gross_salary<180000)
+{
+emp_net_salary=window.open("", "salary", "width=200,height=100");
+emp_net_salary.document.write("Name :"+emp_fullname+"Income tax for you is Nil and net salary is "+emp_gross_salary);
+}
+else if(emp_gross_salary>180000 && emp_gross_salary<300000)
+{
+emp_net_salary=window.open("", "salary", "width=200,height=100");
+emp_net_salary.document.write("name : "+emp_fullname+"  income tax : "+(emp_gross_salary*0.1)+"  net salary : "+(emp_gross_salary-(emp_gross_salary*0.1)));
+}
+else if(emp_gross_salary>300001 && emp_gross_salary<500000)
+{
+emp_net_salary=window.open("", "salary", "width=200,height=100");
+emp_net_salary.document.write("name:"+emp_fullname+"  income tax : "+(emp_gross_salary*0.2)+"  net salary : "+(emp_gross_salary-(emp_gross_salary*0.2)));
+}
+else
+{
+emp_net_salary=window.open("", "salary", "width=200,height=100");
+emp_net_salary.document.write("name: "+emp_fullname+"   income tax is "+(emp_gross_salary*0.3)+"  net salary:"+(emp_gross_salary-(emp_gross_salary*0.3)));
+}
+}
+</script>
+</head>
+<body>
+<form onsubmit="calculateSalary()">
+<center>
+<h1>Employee Details</h1>
+<table border=2>
+<tr><td><label><b>Title:</b></label></td><td><input type="text" name='Title' list='Title' required>
+			<datalist id='Title'>
+				<option value="Mr">
+				<option value="Mrs">
+				<option value="Ms">
+			</datalist>
+<tr><td><label><b>FirstName:</b></label></td><td><input type="text" name="empfirstname" id="firstname" pattern="[A-Za-z]*" maxLength="8" required/></td></tr>
+<tr><td><label><b>LastName:</b></label></td><td><input type="text" name="emplastname" id="lastname" pattern="[A-Za-z]*" maxLength="10" required/></td></tr>
+<tr><td><label><b>Gross Salary:<b></label></td><td><input type="number" name="empsal" id="sal" required"/></td></tr>
+<tr><td><label><b>Address:</b></label></td><td><textarea rows="4" cols="1" name="empaddress" id="add" required"></textarea></td></tr>
+<tr><td><center><input type="submit" value="Salary Slip"/></center></td></tr>
+</table>
+</center>
+</form>
+</body>
+</html>

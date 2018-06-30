@@ -1,0 +1,52 @@
+/*CREATION DATE:06-MAY-2018 
+  AUTHOR NAME: SHRUTHI S
+  PURPOSE :CALCULATION OF ELECTRICITY BILL*/
+
+RECORD ElectricityBill
+    DECLARE consumer_no AS INTEGER 
+	DECLARE consumer_name AS STRING
+    DECLARE no_of_units AS DECIMAL
+    DECLARE fixed_charge1=2.96 AS CONSTANT DECIMAL
+    DECLARE fixed_charge2=5.56 AS CONSTANT DECIMAL
+END RECORD
+BEGIN
+    DECLARE elecBill AS ElectricityBill
+    DECLARE totalBill AS DECIMAL
+    DISPLAY "Enter Consumer Number"
+    ACCEPT elecBill.consumer_no
+    DISPLAY "Enter Consumer Name"
+    ACCEPT elecBill.consumer_name
+    DISPLAY "Enter no of units consumed"
+    ACCEPT elecBill.no_of_units
+   
+EXCEPTION BLOCK
+    isPositive(elecBill.no_of_units)
+    totalBill=calculateBill(elecBill.no_of_units,elecBill.fixed_charge1,fixed_charge2)
+    DISPLAY totalBill
+END EXCEPTION BLOCK
+
+Negative Exception(msg)
+    DISPLAY msg
+END Negative Exception
+
+END
+
+SUB isPositive(DECIMAL elecBill.no_of_units)
+    IF(elecBill.no_of_units < 0)	
+      RAISE Negative Exception("Please Enter units that are greater than 0")
+    END IF
+END SUB
+
+
+DECIMAL SUB calculateBill(DECIMAL elecBill.no_of_units,elecBill.fixed_charge1,elecBill.fixed_charge2)
+    DECLARE elecBill AS ElectricityBill
+    DECLARE netAmount AS DECIMAL
+	IF(no_of_units <= 100)
+    netAmount=(no_of_units*elecBill.fixed_charge1)
+	ELSE IF(no_of_units > 100)
+	netAmount=[(100)*fixed_charge1] + [(no_of_units - 100)*fixed_charge2]
+	END IF
+    RETURN netAmount
+END SUB
+
+    
